@@ -1,16 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useForm from '../Hooks/useForm'; // Import the custom hook
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
+    const navigate = useNavigate(); // For redirection
     const { formData, handleChange, handleSubmit } = useForm({
         email: '',
-        password: '',
     });
+    const [error, setError] = useState(''); // State for error messages
 
-    const submitHandler = (data) => {
-        console.log('Login Form Submitted:', data);
-        // Handle login form submission (e.g., send to API)
+    const submitHandler = async (data) => {
+        try {
+            // Fetch existing users from db.json
+            const response = await fetch('http://localhost:5000/signUpDetails');
+            const users = await response.json();
+
+            // Check if the user exists by email
+            const user = users.find((user) => user.email === data.email);
+
+            if (user) {
+                // Validate the password
+                if (user.password === data.password) {
+                    alert('Login successful!');
+                    // Redirect user to dashboard or home page
+                    navigate('/EmployeeDashboard'); // Replace '/dashboard' with your target route
+                } else {
+                    setError('Invalid password. Please try again.');
+                }
+            } else {
+                setError('User does not exist. Please sign up.');
+            }
+        } catch (err) {
+            console.error('Error during login:', err);
+            setError('An error occurred. Please try again later.');
+        }
     };
 
     return (
@@ -43,6 +66,8 @@ function Login() {
                             required
                         />
                     </div>
+
+                    {error && <p className="text-danger">{error}</p>}
 
                     <button type="submit" className="btn btn-primary btn-block">Login</button>
                 </form>

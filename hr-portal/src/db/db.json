@@ -1,0 +1,34 @@
+{
+  "signUpDetails": [
+    {
+      "id": "1",
+      "username": "john_doe",
+      "password": "password123",
+      "role": "employee"
+    },
+    {
+      "id": "e292",
+      "username": "test1",
+      "password": "test1@",
+      "role": "employee",
+      "email": "test1@gmail.com"
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "department": "Engineering",
+      "position": "Software Developer"
+    }
+  ],
+  "leaveInfo": [
+    {
+      "id": "1",
+      "email": "jane.smith@example.com",
+      "reason": "Family Emergency",
+      "status": "pending"
+    }
+  ]
+}
