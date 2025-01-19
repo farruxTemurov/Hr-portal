@@ -27,6 +27,12 @@
   font-size: 1.8rem;
   font-weight: bold;
   color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.App-header .logo:hover {
+  color: #61dafb;
 }
 
 .App-header .nav-links {
