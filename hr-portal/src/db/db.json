@@ -28,6 +28,20 @@
       "email": "jane.smith@example.com",
       "department": "Engineering",
       "position": "Software Developer"
+    },
+    {
+      "id": "ae03",
+      "username": "Hr",
+      "password": "hr1@",
+      "role": "hr",
+      "email": "hr1@gmail.com"
+    },
+    {
+      "id": "1737273595478",
+      "name": "John",
+      "email": "john@gmail.com",
+      "department": "Engineering",
+      "position": "Front-end Web Developer"
     }
   ],
   "leaveInfo": [

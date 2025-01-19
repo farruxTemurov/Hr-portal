@@ -5,6 +5,7 @@ import SignUp from './Components/Auth/SignUp'; // Import SignUp component
 import Login from './Components/Auth/Login'; // Import Login component
 import './App.css'; // Import the CSS file with background styles
 import EmployeeDashboard from './Components/EmployeeDashboard/EmployeeDashboard';
+import HrDashboard from './Components/HrDashboard/HrDashboard';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/EmployeeDashboard" element={<EmployeeDashboard />} />
+            <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
+            <Route path="/hrDashboard" element={<HrDashboard />} />
 
           </Routes>
         </div>

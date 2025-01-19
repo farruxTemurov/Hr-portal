@@ -19,11 +19,18 @@ function Login() {
             const employee = employees.find((emp) => emp.email === data.email);
 
             if (employee) {
-                // Email exists, redirect to EmployeeDashboard
+                // Email exists, check role and redirect
                 alert('Login successful!');
-                // Optionally save the logged-in user's email to localStorage for further use
-                localStorage.setItem('loggedInUserEmail', data.email);
-                navigate('/EmployeeDashboard'); // Replace with your target route
+                localStorage.setItem('loggedInUserEmail', data.email); // Optionally save the logged-in user's email to localStorage
+
+                // Check the role of the employee
+                if (employee.role === 'hr') {
+                    // If role is HR, redirect to HR dashboard
+                    navigate('/hrDashboard');
+                } else {
+                    // Otherwise, redirect to Employee dashboard
+                    navigate('/employeeDashboard');
+                }
             } else {
                 setError('Employee not found. Please contact HR or try again.');
             }
