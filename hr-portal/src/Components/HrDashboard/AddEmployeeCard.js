@@ -1,63 +1,80 @@
 import React, { useState } from 'react';
-import AddEmployeeCard from './AddEmployeeCard';
-import EmployeeCard from './EmployeeCard';
-import RequestsSection from './RequestsSection';
 
-function HrDashboard() {
-    const [employees, setEmployees] = useState([]);
-    const [leaveRequests, setLeaveRequests] = useState([]);
-    const [showForm, setShowForm] = useState(false); // State to control form visibility
+function AddEmployeeCard({ addEmployee }) {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        department: '',
+        position: '',
+    });
 
-    // Function to add new employee to the list
-    const addEmployee = (employee) => {
-        setEmployees([...employees, employee]);
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Toggle the visibility of the AddEmployee form
-    const toggleFormVisibility = () => {
-        setShowForm(!showForm);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const employee = {
+            ...formData,
+            id: Date.now().toString(), // Generate unique ID
+        };
+        addEmployee(employee); // Call parent function
+        setFormData({ name: '', email: '', department: '', position: '' }); // Clear form
     };
 
     return (
-        <div className="container mt-5">
-            {/* Add New Employee Section */}
-            <div className="row">
-                <div className="col-12 col-md-4">
-                    <div className="card" style={{ width: '100%', maxWidth: '400px', padding: '20px', marginTop: '20px' }}>
-                        <h5 className="card-title text-center mb-4">Add New Employee</h5>
-                        <button
-                            className="btn btn-primary w-100"
-                            onClick={toggleFormVisibility}
-                        >
-                            {showForm ? 'Cancel' : 'Add Employee'}
-                        </button>
-                        {/* AddEmployeeCard Form */}
-                        {showForm && (
-                            <div className="mt-4">
-                                <AddEmployeeCard addEmployee={addEmployee} />
-                            </div>
-                        )}
-                    </div>
-                </div>
+        <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+                <label htmlFor="name" className="form-label">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="form-control"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                />
             </div>
-
-            {/* Employee Cards Section */}
-            <div className="text-center mt-5">
-                <h3>Employee List</h3>
-                <div className="d-flex justify-content-center flex-wrap gap-4">
-                    {employees.map((employee, index) => (
-                        <EmployeeCard key={index} employee={employee} />
-                    ))}
-                </div>
+            <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="form-control"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                />
             </div>
-
-            {/* Leave Requests Section */}
-            <div className="text-center mt-5">
-                <h3>Leave Requests</h3>
-                <RequestsSection leaveRequests={leaveRequests} />
+            <div className="mb-3">
+                <label htmlFor="department" className="form-label">Department</label>
+                <input
+                    type="text"
+                    id="department"
+                    name="department"
+                    className="form-control"
+                    value={formData.department}
+                    onChange={handleChange}
+                    required
+                />
             </div>
-        </div>
+            <div className="mb-3">
+                <label htmlFor="position" className="form-label">Position</label>
+                <input
+                    type="text"
+                    id="position"
+                    name="position"
+                    className="form-control"
+                    value={formData.position}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+            <button type="submit" className="btn btn-success w-100">Add Employee</button>
+        </form>
     );
 }
 
-export default HrDashboard;
+export default AddEmployeeCard;

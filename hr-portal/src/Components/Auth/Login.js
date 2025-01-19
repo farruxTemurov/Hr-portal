@@ -12,19 +12,19 @@ function Login() {
     const submitHandler = async (data) => {
         try {
             // Fetch employees from db.json
-            const response = await fetch('http://localhost:5000/employees');
-            const employees = await response.json();
+            const response = await fetch('http://localhost:5000/signUpDetails');
+            const users = await response.json();
 
             // Check if the email exists in the employees section
-            const employee = employees.find((emp) => emp.email === data.email);
+            const user = users.find((user) => user.email === data.email);
 
-            if (employee) {
+            if (user) {
                 // Email exists, check role and redirect
                 alert('Login successful!');
                 localStorage.setItem('loggedInUserEmail', data.email); // Optionally save the logged-in user's email to localStorage
 
                 // Check the role of the employee
-                if (employee.role === 'hr') {
+                if (user.role === 'hr') {
                     // If role is HR, redirect to HR dashboard
                     navigate('/hrDashboard');
                 } else {

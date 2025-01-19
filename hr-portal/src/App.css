@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-image: url('/public/assets/images/office-img.jpg');
+  background-image: url('/public/assets/images/bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -43,4 +43,9 @@
 
 .App-header .nav-links a:hover {
   color: #61dafb;
+}
+
+.background-container {
+  margin-top: 70px;
+  padding: 20px;
 }
