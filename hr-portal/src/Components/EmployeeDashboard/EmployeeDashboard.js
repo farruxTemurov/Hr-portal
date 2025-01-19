@@ -32,8 +32,8 @@ function EmployeeDashboard() {
     }
 
     return (
-        <div className="container mt-4">
-            <div className="row">
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh', paddingTop: '10px' }}>
+            <div className="row w-100" style={{ maxWidth: '1200px' }}>
                 <div className="col-md-4">
                     <UserInfoCard user={userData} />
                 </div>

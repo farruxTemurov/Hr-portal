@@ -11,24 +11,21 @@ function Login() {
 
     const submitHandler = async (data) => {
         try {
-            // Fetch existing users from db.json
-            const response = await fetch('http://localhost:5000/signUpDetails');
-            const users = await response.json();
+            // Fetch employees from db.json
+            const response = await fetch('http://localhost:5000/employees');
+            const employees = await response.json();
 
-            // Check if the user exists by email
-            const user = users.find((user) => user.email === data.email);
+            // Check if the email exists in the employees section
+            const employee = employees.find((emp) => emp.email === data.email);
 
-            if (user) {
-                // Validate the password
-                if (user.password === data.password) {
-                    alert('Login successful!');
-                    // Redirect user to dashboard or home page
-                    navigate('/EmployeeDashboard'); // Replace '/dashboard' with your target route
-                } else {
-                    setError('Invalid password. Please try again.');
-                }
+            if (employee) {
+                // Email exists, redirect to EmployeeDashboard
+                alert('Login successful!');
+                // Optionally save the logged-in user's email to localStorage for further use
+                localStorage.setItem('loggedInUserEmail', data.email);
+                navigate('/EmployeeDashboard'); // Replace with your target route
             } else {
-                setError('User does not exist. Please sign up.');
+                setError('Employee not found. Please contact HR or try again.');
             }
         } catch (err) {
             console.error('Error during login:', err);
@@ -49,19 +46,6 @@ function Login() {
                             id="email"
                             name="email"
                             value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div className="form-group mb-3">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="password"
-                            name="password"
-                            value={formData.password}
                             onChange={handleChange}
                             required
                         />

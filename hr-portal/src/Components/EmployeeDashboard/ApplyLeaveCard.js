@@ -15,13 +15,13 @@ function ApplyLeaveCard({ user }) {
         }
 
         const leaveData = {
-            username: user.username,
+            email: user.email, // Use email to match the format in db.json
             reason: leaveReason,
             status: 'Pending', // Initially set status to 'Pending'
         };
 
         try {
-            const response = await fetch('http://localhost:5000/leaveStatus', {
+            const response = await fetch('http://localhost:5000/leaveInfo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(leaveData),
@@ -29,12 +29,14 @@ function ApplyLeaveCard({ user }) {
 
             if (response.ok) {
                 alert('Leave application submitted!');
-                setLeaveReason('');
+                setLeaveReason(''); // Clear the input after submission
+                setError(''); // Clear any existing error messages
             } else {
                 alert('Failed to apply for leave.');
             }
         } catch (err) {
             console.error('Error applying for leave:', err);
+            setError('Error submitting leave application.');
         }
     };
 

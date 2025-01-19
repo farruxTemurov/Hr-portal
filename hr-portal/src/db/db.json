@@ -12,6 +12,13 @@
       "password": "test1@",
       "role": "employee",
       "email": "test1@gmail.com"
+    },
+    {
+      "id": "8a7a",
+      "username": "Test2",
+      "password": "test2@",
+      "role": "hr",
+      "email": "test2@gmail.com"
     }
   ],
   "employees": [
@@ -28,7 +35,13 @@
       "id": "1",
       "email": "jane.smith@example.com",
       "reason": "Family Emergency",
-      "status": "pending"
+      "status": "rejected"
+    },
+    {
+      "id": "c012",
+      "email": "jane.smith@example.com",
+      "reason": "health issues",
+      "status": "accepted"
     }
   ]
 }
