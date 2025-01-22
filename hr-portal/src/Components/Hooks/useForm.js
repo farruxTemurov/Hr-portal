@@ -22,7 +22,7 @@ function useForm(initialState) {
 
     return {
         formData,
-        setFormData, // Include this to expose the setFormData function
+        setFormData,
         handleChange,
         handleSubmit,
     };

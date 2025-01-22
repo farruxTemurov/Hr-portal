@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import useForm from '../Hooks/useForm'; // Import the custom hook
+import useForm from '../Hooks/useForm'; 
 import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {
-    const navigate = useNavigate(); // Use navigate to redirect
-    const [error, setError] = useState(''); // State for displaying errors
+    const navigate = useNavigate(); 
+    const [error, setError] = useState(''); 
 
-    // Use the custom hook for form data management
     const { formData, handleChange, handleSubmit, setFormData } = useForm({
         username: '',
         password: '',
@@ -21,7 +20,6 @@ function SignUp() {
         });
     };
 
-    // Submit handler function
     const submitHandler = async (data) => {
         try {
             // Fetch existing users
@@ -47,7 +45,7 @@ function SignUp() {
 
             if (addResponse.ok) {
                 alert('Sign-up successful!');
-                navigate('/login'); // Redirect to login page
+                navigate('/login'); 
             } else {
                 console.error('Failed to add user:', addResponse.statusText);
                 setError('Sign-up failed. Please try again.');
