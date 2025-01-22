@@ -1,34 +1,28 @@
 import React, { useState } from 'react';
-import useForm from '../Hooks/useForm'; // Import the custom hook
+import useForm from '../Hooks/useForm';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
-    const navigate = useNavigate(); // For redirection
+    const navigate = useNavigate();
     const { formData, handleChange, handleSubmit } = useForm({
         email: '',
     });
-    const [error, setError] = useState(''); // State for error messages
+    const [error, setError] = useState('');
 
     const submitHandler = async (data) => {
         try {
-            // Fetch employees from db.json
             const response = await fetch('http://localhost:5000/signUpDetails');
             const users = await response.json();
 
-            // Check if the email exists in the employees section
             const user = users.find((user) => user.email === data.email);
 
             if (user) {
-                // Email exists, check role and redirect
                 alert('Login successful!');
                 localStorage.setItem('loggedInUserEmail', data.email); // Optionally save the logged-in user's email to localStorage
 
-                // Check the role of the employee
                 if (user.role === 'hr') {
-                    // If role is HR, redirect to HR dashboard
                     navigate('/hrDashboard');
                 } else {
-                    // Otherwise, redirect to Employee dashboard
                     navigate('/employeeDashboard');
                 }
             } else {
