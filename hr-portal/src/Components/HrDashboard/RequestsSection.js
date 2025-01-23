@@ -52,7 +52,7 @@ function RequestsSection({ leaveRequests, updateLeaveRequest }) {
                     </div>
                 ))
             ) : (
-                <p>No leave requests available.</p>
+                <p className='text-white'>No leave requests available.</p>
             )}
         </div>
     );

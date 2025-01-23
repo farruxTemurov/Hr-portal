@@ -1,54 +1,43 @@
 {
   "signUpDetails": [
     {
-      "id": "2",
+      "id": "457e",
+      "username": "Dipper",
+      "password": "dipper@",
+      "role": "employee",
+      "email": "dipper@gmail.com"
+    },
+    {
+      "id": "3",
       "username": "Tim",
       "password": "timHr@",
       "role": "hr",
       "email": "tim@gmail.com"
-    },
+    }
+  ],
+  "hrs": [
     {
-      "id": "e292",
-      "username": "test1",
-      "password": "test1@",
-      "role": "employee",
-      "email": "test1@gmail.com"
+      "id": "3",
+      "username": "Tim",
+      "password": "timHr@",
+      "role": "hr",
+      "email": "tim@gmail.com"
     }
   ],
   "employees": [
     {
-      "id": "1",
-      "name": "Jane Smith",
-      "email": "jane.smith@example.com",
-      "department": "Engineering",
-      "position": "Software Developer"
-    },
-    {
-      "id": "1737273595478",
-      "name": "John",
-      "email": "john@gmail.com",
+      "id": "1737612789825",
+      "name": "Dipper",
+      "email": "dipper@gmail.com",
       "department": "Engineering",
       "position": "Front-end Web Developer"
-    },
-    {
-      "id": "1737304480025",
-      "name": "Jake",
-      "email": "jake@gmail.com",
-      "department": "Cybersecurity",
-      "position": "Security Engineer"
     }
   ],
   "leaveInfo": [
     {
-      "id": "1",
-      "email": "jane.smith@example.com",
-      "reason": "Family Emergency",
-      "status": "Accepted"
-    },
-    {
-      "id": "c012",
-      "email": "jane.smith@example.com",
-      "reason": "health issues",
+      "id": "035b",
+      "email": "dipper@gmail.com",
+      "reason": "Taking a break for a week.",
       "status": "Accepted"
     }
   ]

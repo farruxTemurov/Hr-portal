@@ -8,25 +8,36 @@ function Login() {
         email: '',
     });
     const [error, setError] = useState('');
+
     const submitHandler = async (data) => {
         try {
-            const response = await fetch('http://localhost:5000/signUpDetails');
-            const users = await response.json();
+            // Fetch signUpDetails
+            const signUpResponse = await fetch('http://localhost:5000/signUpDetails');
+            const users = await signUpResponse.json();
 
             // Check if the user exists in signUpDetails
             const user = users.find((user) => user.email === data.email);
 
             if (user) {
-                // If user is found in signUpDetails
-                alert('Login successful!');
                 localStorage.setItem('loggedInUserEmail', data.email);
 
                 if (user.role === 'hr') {
-                    // Redirect HR user to HR Dashboard
-                    navigate('/hrDashboard');
+                    // Check if HR exists in the hrs section
+                    const hrResponse = await fetch('http://localhost:5000/hrs');
+                    const hrs = await hrResponse.json();
+
+                    const isHR = hrs.some((hr) => hr.email === data.email);
+
+                    if (isHR) {
+                        // Redirect HR user to HR Dashboard
+                        navigate('/hrDashboard');
+                    } else {
+                        // If HR is not found in the hrs section
+                        setError('HR not found. Please contact the administrator.');
+                    }
                     return;
                 } else if (user.role === 'employee') {
-                    // If user is an employee, check if they are in the employees section
+                    // Check if the user exists in the employees section
                     const employeeResponse = await fetch('http://localhost:5000/employees');
                     const employees = await employeeResponse.json();
 
@@ -42,7 +53,7 @@ function Login() {
                     return;
                 }
             } else {
-                // If user is not found in signUpDetails
+                // User not found in signUpDetails
                 setError('User not found. Please sign up or try again.');
             }
         } catch (err) {
@@ -50,6 +61,7 @@ function Login() {
             setError('An error occurred. Please try again later.');
         }
     };
+
 
 
     return (
