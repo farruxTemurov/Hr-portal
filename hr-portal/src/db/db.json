@@ -1,25 +1,18 @@
 {
   "signUpDetails": [
     {
+      "id": "2",
+      "username": "Tim",
+      "password": "timHr@",
+      "role": "hr",
+      "email": "tim@gmail.com"
+    },
+    {
       "id": "e292",
       "username": "test1",
       "password": "test1@",
       "role": "employee",
       "email": "test1@gmail.com"
-    },
-    {
-      "id": "7a6a",
-      "username": "Dipper",
-      "password": "Dipper",
-      "role": "hr",
-      "email": "dipper@gmail.com"
-    },
-    {
-      "id": "d50a",
-      "username": "Hr Manager",
-      "password": "ManagerHr@",
-      "role": "hr",
-      "email": "hr1@gmail.com"
     }
   ],
   "employees": [
