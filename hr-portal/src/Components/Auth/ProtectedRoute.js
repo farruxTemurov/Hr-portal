@@ -1,17 +1,21 @@
-// ProtectedRoute.js
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ element: Component, roleRequired, ...rest }) => {
+const ProtectedRoute = ({ element, roleRequired }) => {
     const user = JSON.parse(localStorage.getItem('loggedInUser'));
 
-    // If no user is logged in or the user doesn't have the required role, redirect to login
-    if (!user || user.role !== roleRequired) {
-        return <Navigate to="/login" />;
+    if (!user) {
+        // Redirect to login if the user is not logged in
+        return <Navigate to="/login" replace />;
     }
 
-    // If the user has the required role, render the component
-    return <Route {...rest} element={Component} />;
+    if (user.role !== roleRequired) {
+        // Redirect to login or a 404 page if the user does not have the required role
+        return <Navigate to="/notFound" replace />;
+    }
+
+    // Render the component if the user is authenticated and authorized
+    return element;
 };
 
 export default ProtectedRoute;
