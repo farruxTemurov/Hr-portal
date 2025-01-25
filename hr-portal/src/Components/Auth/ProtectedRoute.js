@@ -10,7 +10,7 @@ const ProtectedRoute = ({ element, roleRequired }) => {
     }
 
     if (user.role !== roleRequired) {
-        // Redirect to login or a 404 page if the user does not have the required role
+        // Redirect 404 page if the user does not have the required role
         return <Navigate to="/notFound" replace />;
     }
 

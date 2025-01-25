@@ -6,8 +6,7 @@ import ApplyLeaveCard from './ApplyLeaveCard';
 function EmployeeDashboard() {
     const [userData, setUserData] = useState(null);
 
-    // Assuming the user is logged in and user email is stored in localStorage
-    const loggedInUserEmail = localStorage.getItem('loggedInUserEmail'); // Email of logged-in user
+    const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
 
     useEffect(() => {
         const fetchUserData = async () => {

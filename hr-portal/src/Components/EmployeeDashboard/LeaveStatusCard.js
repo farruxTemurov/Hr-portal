@@ -7,20 +7,19 @@ function LeaveStatusCard({ user }) {
     useEffect(() => {
         const fetchLeaveStatus = async () => {
             try {
-                console.log("Fetching leave info for user:", user); // Debug log
+                console.log("Fetching leave info for user:", user);
                 const response = await fetch('http://localhost:5000/leaveInfo');
                 const leaveData = await response.json();
 
-                console.log("Fetched leave data:", leaveData); // Debug log
+                console.log("Fetched leave data:", leaveData);
 
-                // Find the leave info for the current user's email
                 const userLeave = leaveData.find((leave) => leave.email === user.email);
 
                 if (userLeave) {
-                    console.log("Leave found for user:", userLeave); // Debug log
+                    console.log("Leave found for user:", userLeave);
                     setLeaveStatus(userLeave.status);
                 } else {
-                    console.log("No leave applied for user:", user.email); // Debug log
+                    console.log("No leave applied for user:", user.email);
                     setLeaveStatus('No leave applied');
                 }
             } catch (error) {

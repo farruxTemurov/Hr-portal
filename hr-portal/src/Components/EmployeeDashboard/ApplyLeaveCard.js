@@ -15,7 +15,7 @@ function ApplyLeaveCard({ user }) {
         }
 
         const leaveData = {
-            email: user.email, // Use email to match the format in db.json
+            email: user.email, 
             reason: leaveReason,
             status: 'Pending', // Initially set status to 'Pending'
         };
@@ -29,8 +29,8 @@ function ApplyLeaveCard({ user }) {
 
             if (response.ok) {
                 alert('Leave application submitted!');
-                setLeaveReason(''); // Clear the input after submission
-                setError(''); // Clear any existing error messages
+                setLeaveReason(''); 
+                setError(''); 
             } else {
                 alert('Failed to apply for leave.');
             }
