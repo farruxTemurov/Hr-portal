@@ -6,20 +6,31 @@ import Login from './Components/Auth/Login'; // Import Login component
 import './App.css'; // Import the CSS file with background styles
 import EmployeeDashboard from './Components/EmployeeDashboard/EmployeeDashboard';
 import HrDashboard from './Components/HrDashboard/HrDashboard';
+import ProtectedRoute from './Components/Auth/ProtectedRoute'; // Import ProtectedRoute
+import AccessDenied from './Components/Auth/404'; // Import AccessDenied page (optional)
 
 function App() {
   return (
     <Router>
       <div className="App">
-        {/* Add a container with the background styling */}
         <div className="background-container">
           <Header />
+
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
-            <Route path="/hrDashboard" element={<HrDashboard />} />
 
+            {/* Protected Routes */}
+            <ProtectedRoute
+              path="/employeeDashboard"
+              element={<EmployeeDashboard />}
+              roleRequired="employee"
+            />
+            <ProtectedRoute
+              path="/hrDashboard"
+              element={<HrDashboard />}
+              roleRequired="hr"
+            />
           </Routes>
         </div>
       </div>

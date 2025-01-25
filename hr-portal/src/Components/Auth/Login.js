@@ -20,6 +20,7 @@ function Login() {
 
             if (user) {
                 localStorage.setItem('loggedInUserEmail', data.email);
+                localStorage.setItem('loggedInUser', JSON.stringify({ email: data.email, role: user.role }));
 
                 if (user.role === 'hr') {
                     // Check if HR exists in the hrs section
