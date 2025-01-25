@@ -5,11 +5,11 @@ function RequestsSection({ leaveRequests, updateLeaveRequest }) {
     const [newStatus, setNewStatus] = useState("");
 
     const handleManageClick = (id) => {
-        setSelectedRequestId(selectedRequestId === id ? null : id); // Toggle form visibility
+        setSelectedRequestId(selectedRequestId === id ? null : id); 
     };
 
     const handleUpdate = (id) => {
-        updateLeaveRequest(id, newStatus); // Update request in db.json
+        updateLeaveRequest(id, newStatus); 
         setSelectedRequestId(null); // Close the form after update
     };
 

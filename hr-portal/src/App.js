@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './Components/Header/header'; // Import Header component
-import SignUp from './Components/Auth/SignUp'; // Import SignUp component
-import Login from './Components/Auth/Login'; // Import Login component
+import Header from './Components/Header/header';
+import SignUp from './Components/Auth/SignUp';
+import Login from './Components/Auth/Login';
 import NotFound from './Components/Auth/404';
-import './App.css'; // Import the CSS file with background styles
+import './App.css';
 import EmployeeDashboard from './Components/EmployeeDashboard/EmployeeDashboard';
 import HrDashboard from './Components/HrDashboard/HrDashboard';
-import ProtectedRoute from './Components/Auth/ProtectedRoute'; // Import ProtectedRoute
+import ProtectedRoute from './Components/Auth/ProtectedRoute';
 
 function App() {
   return (
@@ -25,19 +25,17 @@ function App() {
             <Route
               path="/employeeDashboard"
               element={
-                <ProtectedRoute
-                  element={<EmployeeDashboard />}
-                  roleRequired="employee"
-                />
+                <ProtectedRoute roleRequired="employee">
+                  <EmployeeDashboard />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/hrDashboard"
               element={
-                <ProtectedRoute
-                  element={<HrDashboard />}
-                  roleRequired="hr"
-                />
+                <ProtectedRoute roleRequired="hr">
+                  <HrDashboard />
+                </ProtectedRoute>
               }
             />
           </Routes>

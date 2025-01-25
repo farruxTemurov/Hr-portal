@@ -19,7 +19,7 @@ function AddEmployeeCard({ addEmployee }) {
             id: Date.now().toString(), // Generate unique ID
         };
         addEmployee(employee); // Call parent function
-        setFormData({ name: '', email: '', department: '', position: '' }); // Clear form
+        setFormData({ name: '', email: '', department: '', position: '' }); 
     };
 
     return (
